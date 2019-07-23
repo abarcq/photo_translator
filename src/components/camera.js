@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import {
-    StyleSheet,
-} from 'react-native';
-
 
 import { RNCamera } from 'react-native-camera';
+import { styles } from '../styles/cameraStyle';
 
 export default class Camera extends Component {
 
@@ -35,21 +32,9 @@ export default class Camera extends Component {
                 permissionDialogMessage={
                     "We need your permission to use your camera phone"
                 }
-                onGoogleVisionBarcodesDetected={({ barcodes }) => {
-                    console.log(barcodes)
-                }}
-                captureAudio={false}
             />
         );
 
     }
 
 }
-
-const styles = StyleSheet.create({
-    preview: {
-        flex: 1,
-        justifyContent: 'flex-end',
-        alignItems: 'center'
-    },
-});
