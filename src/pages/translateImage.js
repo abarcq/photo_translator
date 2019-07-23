@@ -6,9 +6,9 @@ import {
   View
 } from 'react-native';
 
-import Camera from './src/components/camera';
-import contentVision from './src/services/contentVision';
-import translate from './src/services/translate';
+import Camera from '../components/camera';
+import contentVision from '../services/contentVision';
+import translate from '../services/translate';
 import { styles } from '../styles/cameraStyle';
 
 
