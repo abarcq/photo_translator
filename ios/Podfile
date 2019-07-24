@@ -30,6 +30,8 @@ target 'image_text' do
 
   pod 'react-native-camera', :path => '../node_modules/react-native-camera'
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'image_textTests' do
     inherit! :search_paths
     # Pods for testing
