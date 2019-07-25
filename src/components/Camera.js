@@ -11,11 +11,24 @@ export default class Camera extends Component {
         }
     }
 
-    takePicture = async () => {
+    takePicture = () => {
         if (this.camera) {
             const options = { quality: 0.5, base64: true };
-            const data = await this.camera.takePictureAsync(options);
-            this.props.setValue(data)
+            this.camera.takePictureAsync(options)
+                .then(response => {
+                    if(response.base64){
+                        this.props.setImage(response)
+                    }else{
+                        throw 'photo error'
+                    }
+
+                })
+                .catch(error => {
+                    this.props.setImage({
+                        text: error
+                    })
+
+                })
         }
     };
 

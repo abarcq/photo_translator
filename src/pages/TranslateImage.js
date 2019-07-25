@@ -12,10 +12,10 @@ import translate from '../services/Translate';
 import { styles } from '../styles/cameraStyle';
 
 
-async function extractAndTraduct(value){
+async function extractAndTraduct(image){
   let response = false;
   try{
-    const {local, text} = await contentVision(value)
+    const {local, text} = await contentVision(image)
     const textTranslate = await translate(text, local)
     response = textTranslate
   }
@@ -30,16 +30,17 @@ async function extractAndTraduct(value){
 
 export default function TranslateImage() {
 
-  const [value, setValue] = useState({
+  const [image, setImage] = useState({
+    base64: '',
     text: '',
   });
 
   useEffect( () => {
-    if (value.base64 && !value.text) {
-      extractAndTraduct(value.base64)
+    if (image.base64 && !image.text) {
+      extractAndTraduct(image.base64)
         .then(textTranslate=>{
-          setValue({
-            ...value,
+          setImage({
+            ...image,
             text: textTranslate
           })
         })
@@ -49,13 +50,13 @@ export default function TranslateImage() {
 
   return (
     <View style={styles.container}>
-      <Camera setValue={(value) => setValue(value)} takePicture={isNil(value.text)} />
+      <Camera setImage={(image) => setImage(image)} takePicture={isNil(image.text)} />
       <View style={styles.bottom}>
         <View>
-          <Text style={styles.informations}> {value.text} </Text>
+          <Text style={styles.informations}> {image.text} </Text>
         </View>
-        <TouchableOpacity onPress={() => setValue({ text: null })} style={styles.capture}>
-          {!isNil(value.text) ?
+        <TouchableOpacity onPress={() => setImage({ text: null })} style={styles.capture}>
+          {!isNil(image.text) ?
             <Text style={{ fontSize: 14 }}> SNAP </Text>
             :
             <Text style={{ fontSize: 14 }}> LOADING </Text>
