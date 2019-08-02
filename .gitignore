@@ -37,6 +37,7 @@ npm-debug.log
 yarn-error.log
 metro-cache/
 haste-map-metro-*
+yarn.lock
 
 # BUCK
 buck-out/
