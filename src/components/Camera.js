@@ -13,7 +13,7 @@ export default class Camera extends Component {
 
     takePicture = () => {
         if (this.camera) {
-            const options = { quality: 0.5, base64: true };
+            const options = { quality: 1, base64: true };
             this.camera.takePictureAsync(options)
                 .then(response => {
                     if(response.base64){
@@ -41,10 +41,13 @@ export default class Camera extends Component {
                 style={styles.preview}
                 type={RNCamera.Constants.Type.back}
                 flashMode={RNCamera.Constants.FlashMode.off}
-                permissionDialogTitle={"Permission to use camera"}
-                permissionDialogMessage={
-                    "We need your permission to use your camera phone"
-                }
+                captureAudio={false}
+                androidCameraPermissionOptions={{
+                    title: 'Permission to use camera',
+                    message: 'We need your permission to use your camera',
+                    buttonPositive: 'Ok',
+                    buttonNegative: 'Cancel',
+                  }}
             />
         );
 

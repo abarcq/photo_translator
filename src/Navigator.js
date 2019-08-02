@@ -1,8 +1,9 @@
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 
 import TranslateImage from './pages/TranslateImage';
+import SettingsScreen from './pages/Settings';
 
-const AppNavigator = createStackNavigator({
+const AppNavigator = createBottomTabNavigator({
     Home: {
       screen: TranslateImage,
       navigationOptions: () => ({
@@ -10,7 +11,8 @@ const AppNavigator = createStackNavigator({
             display: 'none'
         }
       }),
-    }
+    },
+    Settings: SettingsScreen,
   });
   
   export default createAppContainer(AppNavigator);
