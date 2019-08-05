@@ -18,3 +18,22 @@ export default async function contentVision(content) {
     return ({ local, text });
 
 }
+
+export const fetchContent = async (content) => {
+      try {
+        const { data } = await axios.request({
+          method: 'post',
+          url: `https://content-vision.googleapis.com/v1/images:annotate?alt=json&key=${KEY}`,
+          bady: {
+            requests: [{
+                features: [{ type: "TEXT_DETECTION" }],
+                image: { content }
+            }]
+        }
+        });
+    
+        return data;
+      } catch (e) {
+        console.error('Could not fetchData', e);
+      }
+    };

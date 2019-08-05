@@ -38,6 +38,7 @@ yarn-error.log
 metro-cache/
 haste-map-metro-*
 yarn.lock
+*.snap
 
 # BUCK
 buck-out/

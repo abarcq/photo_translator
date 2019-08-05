@@ -1,6 +1,6 @@
 import { isNil } from 'lodash';
 import React, { Component } from 'react';
-import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 import { withNavigationFocus } from 'react-navigation';
 
 import Camera from '../components/Camera';
